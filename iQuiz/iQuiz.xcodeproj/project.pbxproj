@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AAABCF1D1DD46796009BD0A7 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAABCF1C1DD46796009BD0A7 /* TableViewController.swift */; };
+		AAABCF1F1DD4681E009BD0A7 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAABCF1E1DD4681E009BD0A7 /* QuestionViewController.swift */; };
 		AAC5052C1DCC03F200F439E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC5052B1DCC03F200F439E7 /* AppDelegate.swift */; };
-		AAC5052E1DCC03F200F439E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC5052D1DCC03F200F439E7 /* ViewController.swift */; };
 		AAC505311DCC03F200F439E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAC5052F1DCC03F200F439E7 /* Main.storyboard */; };
 		AAC505331DCC03F200F439E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAC505321DCC03F200F439E7 /* Assets.xcassets */; };
 		AAC505361DCC03F200F439E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAC505341DCC03F200F439E7 /* LaunchScreen.storyboard */; };
@@ -34,9 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AAABCF1C1DD46796009BD0A7 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		AAABCF1E1DD4681E009BD0A7 /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		AAC505281DCC03F200F439E7 /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAC5052B1DCC03F200F439E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AAC5052D1DCC03F200F439E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AAC505301DCC03F200F439E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AAC505321DCC03F200F439E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAC505351DCC03F200F439E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,7 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				AAC5052B1DCC03F200F439E7 /* AppDelegate.swift */,
-				AAC5052D1DCC03F200F439E7 /* ViewController.swift */,
+				AAABCF1C1DD46796009BD0A7 /* TableViewController.swift */,
+				AAABCF1E1DD4681E009BD0A7 /* QuestionViewController.swift */,
 				AAC5052F1DCC03F200F439E7 /* Main.storyboard */,
 				AAC505321DCC03F200F439E7 /* Assets.xcassets */,
 				AAC505341DCC03F200F439E7 /* LaunchScreen.storyboard */,
@@ -262,8 +265,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAC5052E1DCC03F200F439E7 /* ViewController.swift in Sources */,
+				AAABCF1D1DD46796009BD0A7 /* TableViewController.swift in Sources */,
 				AAC5052C1DCC03F200F439E7 /* AppDelegate.swift in Sources */,
+				AAABCF1F1DD4681E009BD0A7 /* QuestionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +520,7 @@
 				AAC505521DCC03F200F439E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AAC505531DCC03F200F439E7 /* Build configuration list for PBXNativeTarget "iQuizTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +529,7 @@
 				AAC505551DCC03F200F439E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AAC505561DCC03F200F439E7 /* Build configuration list for PBXNativeTarget "iQuizUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +538,7 @@
 				AAC505581DCC03F200F439E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

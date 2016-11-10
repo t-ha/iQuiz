@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TableViewController.swift
 //  iQuiz
 //
 //  Created by MAIN on 11.03.16.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
-
+class TableViewController: UITableViewController {
+    
     
     @IBOutlet var quizTableView: UITableView!
     
@@ -23,10 +23,10 @@ class ViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-   // override func viewDidAppear(_ animated: Bool) {
-   //     super.viewDidAppear(animated)
-   //     tableViewO?.reloadData()
-   // }
+    // override func viewDidAppear(_ animated: Bool) {
+    //     super.viewDidAppear(animated)
+    //     tableViewO?.reloadData()
+    // }
     
     
     @IBAction func tapSettings(_ sender: Any) {
@@ -58,7 +58,7 @@ class ViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
