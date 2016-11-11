@@ -131,6 +131,7 @@
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="bnm-Nf-6dV" appends="YES" id="piH-1M-rFH"/>
+                            <outletCollection property="gestureRecognizers" destination="y2P-DC-q72" appends="YES" id="8EZ-k2-Avc"/>
                         </connections>
                     </view>
                     <connections>
@@ -146,6 +147,11 @@
                 <swipeGestureRecognizer direction="right" id="bnm-Nf-6dV">
                     <connections>
                         <action selector="swipeRight:" destination="mzx-Mi-rAd" id="CVK-Ad-AVA"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="y2P-DC-q72">
+                    <connections>
+                        <action selector="swipeLeftBack:" destination="mzx-Mi-rAd" id="yh9-iE-RvU"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>

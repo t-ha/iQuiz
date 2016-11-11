@@ -60,6 +60,10 @@ class QuestionViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         pickedAnswer = answers[cat]![index][row]
     }
     
+    @IBAction func swipeLeftBack(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
     @IBAction func swipeRight(_ sender: Any) {
         if finished {
             self.navigationController?.popToRootViewController(animated: true)
