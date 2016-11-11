@@ -26,8 +26,8 @@ class QuestionViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var correctAnswerLabel: UILabel!
     @IBOutlet weak var yourAnswer: UILabel!
-    
     @IBOutlet weak var nextButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         pickerView.delegate = self
@@ -35,6 +35,7 @@ class QuestionViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         answerLabel.isHidden = true
         correctAnswerLabel.isHidden = true
         yourAnswer.isHidden = true
+        pickedAnswer = answers[cat]![index][0]
         qLabel.text = questions[cat]?[index].0
         // Do any additional setup after loading the view.
     }
@@ -64,9 +65,13 @@ class QuestionViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         self.navigationController?.popToRootViewController(animated: true)
     }
     
-    @IBAction func swipeRight(_ sender: Any) {
+    @IBAction func swipeRightNext(_ sender: Any) {
+        tapGo(Any.self)
+    }
+    
+    @IBAction func tapGo(_ sender: Any) {
         if finished {
-            self.navigationController?.popToRootViewController(animated: true)
+            swipeLeftBack(Any.self)
         } else if isQuestion {
             nextButton.setTitle("Next", for: .normal)
             self.pickerView.isHidden = true
@@ -84,9 +89,9 @@ class QuestionViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
             } else {
                 answerLabel.text = "INCORRECT"
             }
-            pickedAnswer = ""
             index += 1
         } else if index < (questions[cat]?.count)! {
+            pickedAnswer = answers[cat]![index][0]
             nextButton.setTitle("Submit", for: .normal)
             self.pickerView.isHidden = false
             self.answerLabel.isHidden = true
@@ -109,56 +114,7 @@ class QuestionViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
                 answerLabel.text = "Sorry."
             }
             qLabel.text = "You got \(numCorrect) out of \(index) correct."
-            finished = true
-        }
-        isQuestion = !isQuestion
-    }
-    
-    @IBAction func tapGo(_ sender: UIButton) {
-        if finished {
-            self.navigationController?.popToRootViewController(animated: true)
-        } else if isQuestion {
-            sender.setTitle("Next", for: .normal)
-            self.pickerView.isHidden = true
-            self.answerLabel.isHidden = false
-            self.correctAnswerLabel.isHidden = false
-            self.yourAnswer.isHidden = false
-            let correctAnswer = questions[cat]![index].1
-            self.correctAnswerLabel.text = "Answer: \(correctAnswer)"
-            
-            yourAnswer.text = "Your answer: \(pickedAnswer)"
-            
-            if pickedAnswer == correctAnswer {
-                answerLabel.text = "CORRECT"
-                numCorrect += 1
-            } else {
-                answerLabel.text = "INCORRECT"
-            }
-            pickedAnswer = ""
-            index += 1
-        } else if index < (questions[cat]?.count)! {
-            sender.setTitle("Submit", for: .normal)
-            self.pickerView.isHidden = false
-            self.answerLabel.isHidden = true
-            self.correctAnswerLabel.isHidden = true
-            self.yourAnswer.isHidden = true
-            qLabel.text = questions[cat]?[index].0
-            pickerView.dataSource = self
-        } else {
-            pickerView.removeFromSuperview()
-            correctAnswerLabel.removeFromSuperview()
-            yourAnswer.removeFromSuperview()
-            let accuracy: Double = Double(numCorrect) / Double(index)
-            if accuracy == 100.0 {
-                answerLabel.text = "Perfect!"
-            } else if accuracy >= 75.0 {
-                answerLabel.text = "Almost!"
-            } else if accuracy >= 40.0 {
-                answerLabel.text = "Try again."
-            } else {
-                answerLabel.text = "Sorry."
-            }
-            qLabel.text = "You got \(numCorrect) out of \(index) correct."
+            nextButton.setTitle("Finish", for: .normal)
             finished = true
         }
         isQuestion = !isQuestion

@@ -81,6 +81,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Question" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="u4L-zG-2XD">
                                 <rect key="frame" x="0.0" y="38" width="375" height="157"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -130,8 +131,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="bnm-Nf-6dV" appends="YES" id="piH-1M-rFH"/>
                             <outletCollection property="gestureRecognizers" destination="y2P-DC-q72" appends="YES" id="8EZ-k2-Avc"/>
+                            <outletCollection property="gestureRecognizers" destination="4CT-qd-kko" appends="YES" id="T6N-2t-vm4"/>
                         </connections>
                     </view>
                     <connections>
@@ -144,14 +145,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Uz-4R-Mna" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="bnm-Nf-6dV">
-                    <connections>
-                        <action selector="swipeRight:" destination="mzx-Mi-rAd" id="CVK-Ad-AVA"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="left" id="y2P-DC-q72">
+                <swipeGestureRecognizer direction="left" id="y2P-DC-q72" userLabel="swipe left">
                     <connections>
                         <action selector="swipeLeftBack:" destination="mzx-Mi-rAd" id="yh9-iE-RvU"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="4CT-qd-kko" userLabel="swipe right">
+                    <connections>
+                        <action selector="swipeRightNext:" destination="mzx-Mi-rAd" id="70l-MX-bj6"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
