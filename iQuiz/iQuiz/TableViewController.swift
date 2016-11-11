@@ -23,11 +23,6 @@ class TableViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    // override func viewDidAppear(_ animated: Bool) {
-    //     super.viewDidAppear(animated)
-    //     tableViewO?.reloadData()
-    // }
-    
     
     @IBAction func tapSettings(_ sender: Any) {
         let alertController = UIAlertController(title: "Settings go here", message: "", preferredStyle: .alert)
@@ -47,12 +42,26 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath as IndexPath)
         cell.textLabel?.text = categories[indexPath.item]
         cell.detailTextLabel?.text = catDescr[indexPath.item]
-        //var image : UIImage = UIImage(named: "osx_design_view_messages")
-        //println("The loaded image: \(image)")
         cell.imageView?.image = catIcons[indexPath.item]
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegue(withIdentifier: "cellToQ", sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "cellToQ") {
+            let controller = segue.destination as! QuestionViewController
+//            let rows = (sender as! NSIndexPath).row
+            let path = self.tableView.indexPathForSelectedRow!
+//            let row = tableView.indexPathForSelectedRow
+//            let row = IndexPath
+//            print(path)
+            let cat = categories[path[1]]
+            controller.cat = cat
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
