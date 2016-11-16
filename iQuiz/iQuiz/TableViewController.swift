@@ -13,16 +13,50 @@ class TableViewController: UITableViewController {
     
     @IBOutlet var quizTableView: UITableView!
     
-    let categories = ["Mathematics", "Marvel Super Heroes", "Science"]
-    let catDescr = ["Something with numbers", "How well do you know The Hulk?", "Some more numbers"]
-    let catIcons = [#imageLiteral(resourceName: "mathIcon"), #imageLiteral(resourceName: "marvelIcon"), #imageLiteral(resourceName: "scienceIcon")]
+    let url = "http://tednewardsandbox.site44.com/questions.json"
+    let catIcons = [#imageLiteral(resourceName: "scienceIcon"), #imageLiteral(resourceName: "marvelIcon"), #imageLiteral(resourceName: "mathIcon")]
+    var categories: [String] = []
+    var catDescr: [String] = []
+    var questions = [String: [(String, String)]]()
+    var answers = [String: [[String]]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getData()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    func getData() {
+        let urlString: URL = URL(string: url)!
+        URLSession.shared.dataTask(with: urlString) { (data, response, error) in
+            if error != nil {
+                print(error!)
+            } else {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [[String:Any]]
+                    for section in json {
+                        let title = section["title"]! as! String
+                        if let catQuestions = section["questions"] as? [[String:Any]] {
+                            var tempQ: [(String,String)] = []
+                            var tempA: [[String]] = []
+                            for temp in catQuestions {
+                                var tempArray = temp["answers"]! as! [String]
+                                let answerIndex = Int(temp["answer"]! as! String)! - 1
+                                tempQ.append((temp["text"]! as! String, tempArray[answerIndex]))
+                                tempA.append(tempArray)
+                            }
+                            self.questions[title] = tempQ
+                            self.answers[title] = tempA
+                        }
+                        self.categories.append(title)
+                        self.catDescr.append(section["desc"]! as! String)
+                    }
+                } catch {
+                    print("error serializing JSON \(error)")
+                }
+            }
+        }.resume()
+    }
     
     @IBAction func tapSettings(_ sender: Any) {
         let alertController = UIAlertController(title: "Settings go here", message: "", preferredStyle: .alert)
@@ -35,7 +69,7 @@ class TableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,15 +87,15 @@ class TableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "cellToQ") {
             let controller = segue.destination as! QuestionViewController
-//            let rows = (sender as! NSIndexPath).row
             let path = self.tableView.indexPathForSelectedRow!
-//            let row = tableView.indexPathForSelectedRow
-//            let row = IndexPath
-//            print(path)
             let cat = categories[path[1]]
             controller.cat = cat
+            controller.url = url
+            controller.questions = questions
+            controller.answers = answers
         }
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

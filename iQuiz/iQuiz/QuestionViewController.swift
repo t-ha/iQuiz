@@ -10,12 +10,9 @@ import UIKit
 
 class QuestionViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
     var cat: String = ""
-    var questions: [String: [(String, String)]] = ["Mathematics": [("What is 2+2?", "4"), ("What is 8 X 8?", "64")],
-                                         "Marvel Super Heroes": [("What is Thor's weapon of choice?", "A hammer"), ("What is Spider-Man's real name?", "Peter Parker")],
-                                         "Science": [("What is the biggest plannet in our solar system?", "Jupiter"), ("What is the chemical symbol for the element Gold?", "Au")]]
-    var answers: [String: [[String]]] = ["Mathematics": [["0", "-4", "2", "4"], ["64", "46", "88", "16"]],
-                                       "Marvel Super Heroes": [["A hammer", "A sword", "An apple", "A shield"], ["Tony Parker", "Peter Parker", "Ben Parker", "Bruce Banner"]],
-                                       "Science": [["Earth", "Neptune", "Jupiter", "Mars"], ["Ag", "Gd", "Ga", "Au"]]]
+    var url = ""
+    var questions = [String: [(String, String)]]()
+    var answers = [String: [[String]]]()
     var isQuestion: Bool = true
     var finished: Bool = false
     var numCorrect: Int  = 0
